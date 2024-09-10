@@ -25,33 +25,62 @@ html, body{
     overflow: hidden;
     box-sizing: border-box;
     border-radius: 7px;
-    width: 75%;
-    height: 75%;
-    background-color: white;
+    width: 80%;
+    height: 80%;
+    background-color: rgb(221, 239, 255);
 }
 
 #B1{
     display: flex;
     justify-content: space-around;
-    padding: 20px;
     height: 75px;
     width: 100%;
-    background-color: rgb(111, 153, 187);
+    background-color: rgb(47, 149, 245);
 }
 
 .b1{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px;
+    width:fit-content;
+    margin-right: 0px;
     width: 9%;
+    color: rgb(229, 242, 254);
+    
 }
 .box{
     display: flex;
     justify-content: center;
-    border-radius: 2px;
-    width: 27px;
-    background-color: white;
+    margin-top: 5px;
+    border-radius: 3px;
+    padding-inline: 5px;
+    padding-bottom: 2px;
+    margin-left: 3px;
+    background-color: rgb(224, 240, 255);
     color: black;
 }
 
+#B2{
+    display: flex;
+    width: 100%;
+    height: calc(100% - 75px);
+    padding: 40px;
+    flex-wrap: wrap;
+}
+
+.circle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: 10px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: rgb(129, 197, 252)
+
+}
+
+.circle:hover{
+    background-color: rgb(47, 149, 245);
+    cursor: pointer;
+}
