@@ -1,35 +1,146 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <div id="page">
-            <div id="block">
-                <div id="B1">
-                <div class="b1">
-                    <h2>Target:</h2>
-                    <div class="box">8</div>
-                </div>
-                <div class="b1">
-                    <h2>Time:</h2>
-                    <div class="box">45:09</div>
-                </div>
-                <div class="b1">
-                    <h2>Score:</h2>
-                    <div class="box">66</div>
-                </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circle Blitz - The Ultimate Number Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <nav id="main-nav">
+            <div class="logo">Circle Blitz</div>
+            <div class="nav-buttons">
+                <button id="homeButton" class="nav-button"><i class="fas fa-home"></i> Home</button>
+                <button id="profileButton" class="nav-button"><i class="fas fa-user"></i> Profile</button>
+                <button id="leaderboardButton" class="nav-button"><i class="fas fa-trophy"></i> Leaderboard</button>
+                <button id="logoutButton" class="nav-button"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </nav>
 
+        <div id="homepage" class="page">
+            <h1>Welcome to Circle-Blitz!</h1>
+            <p>Test your speed and accuracy in this thrilling number matching game!</p>
+            <button id="playButton" class="big-button">Play Now</button>
+            <div id="login-register">
+                <button id="loginButton" class="medium-button">Login</button>
+                <button id="registerButton" class="medium-button">Register</button>
+            </div>
+        </div>
+
+        <div id="loginPage" class="page">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="text" id="loginUsername" placeholder="Username" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit" class="medium-button">Login</button>
+            </form>
+        </div>
+
+        <div id="registerPage" class="page">
+            <h2>Register</h2>
+            <form id="registerForm">
+                <input type="text" id="registerUsername" placeholder="Username" required>
+                <input type="password" id="registerPassword" placeholder="Password" required>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                <button type="submit" class="medium-button">Register</button>
+            </form>
+        </div>
+
+        <div id="gamePage" class="page">
+            <div id="gameInfo">
+                <div class="info-box">
+                    <h3>Target:</h3>
+                    <div id="target" class="value-box"></div>
                 </div>
-                <div id="B2">                    
+                <div class="info-box">
+                    <h3>Time:</h3>
+                    <div id="runtimer" class="value-box"></div>
+                </div>
+                <div class="info-box">
+                    <h3>Score:</h3>
+                    <div id="scorer" class="value-box">0</div>
+                </div>
+            </div>
+            <div id="B2" class="game-board"></div>
+            <button id="pauseButton" class="medium-button">Pause</button>
+        </div>
+
+        <div id="gameOverPage" class="page">
+            <div class="game-over-content">
+                <h2>Game Over</h2>
+                <div class="score-container">
+                    <div class="score-item">
+                        <i class="fas fa-star"></i>
+                        <p>Your score: <span id="finalScore"></span></p>
+                    </div>
+                    <div class="score-item">
+                        <i class="fas fa-level-up-alt"></i>
+                        <p>Level reached: <span id="finalLevel"></span></p>
+                    </div>
+                </div>
+                <button id="playAgainButton" class="big-button">Play Again</button>
+            </div>
+        </div>
+
+        <div id="profilePage" class="page">
+            <div class="profile-container">
+                <div class="profile-header">
+                    <i class="fas fa-user-circle"></i>
+                    <h2 id="profileUsername">JOHN DOE</h2>
+                </div>
+                <div class="profile-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-gamepad"></i>
+                        <p>Games Played</p>
+                        <span id="gamesPlayed">7</span>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-trophy"></i>
+                        <p>Highest Score</p>
+                        <span id="highestScore">100</span>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-chart-line"></i>
+                        <p>Average Score</p>
+                        <span id="averageScore">32</span>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-level-up-alt"></i>
+                        <p>Highest Level</p>
+                        <span id="highestLevel">2</span>
+                    </div>
+                </div>
+                <div class="recent-scores">
+                    <h3>Recent Scores</h3>
+                    <ul id="recentScores">
+                        <li><span class="score-value">100</span></li>
+                        <li><span class="score-value">60</span></li>
+                        <li><span class="score-value">0</span></li>
+                        <li><span class="score-value">0</span></li>
+                        <li><span class="score-value">0</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <script src="script.js" async defer></script>
-    </body>
+
+        <div id="leaderboardPage" class="page">
+            <h2>Leaderboard</h2>
+            <table id="leaderboardTable">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Highest Score</th>
+                        <th>Highest Level</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboardBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
