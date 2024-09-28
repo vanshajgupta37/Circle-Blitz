@@ -12,9 +12,9 @@ let totalPages = 3;
 
 // Sound effects
 const sounds = {
-    correct: new Audio('sounds/correct-sound.mp3'),
-    wrong: new Audio('sounds/wrong-sound.mp3'),
-    gameOver: new Audio('sounds/game-over-sound.mp3')
+    correct: new Audio('sounds/correct-sound.wav'),
+    wrong: new Audio('sounds/wrong-sound.wav'),
+    gameOver: new Audio('sounds/game-over-sound.wav')
 };
 
 // Ensure sounds are loaded
