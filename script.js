@@ -201,7 +201,7 @@ function updateProfile() {
         let user = users[currentUser];
         if (elements.profileUsername) elements.profileUsername.textContent = currentUser;
         if (elements.gamesPlayed) elements.gamesPlayed.textContent = user.gamesPlayed;
-        if (elements.highestScore) elements.highestScore.textContent = Math.max(...user.scores) || 0;
+        if (elements.highestScore) elements.highestScore.textContent = user.scores.length > 0 ? Math.max(...user.scores) : 0;
         if (elements.averageScore) elements.averageScore.textContent = user.scores.length > 0 ? 
             Math.round(user.scores.reduce((a, b) => a + b) / user.scores.length) : 0;
         if (elements.highestLevel) elements.highestLevel.textContent = user.highestLevel;
@@ -221,7 +221,7 @@ function updateLeaderboard() {
     let users = JSON.parse(localStorage.getItem('users')) || {};
     let scores = Object.entries(users).map(([username, data]) => ({
         username,
-        highestScore: Math.max(...(data.scores || [0])),
+        highestScore: data.scores.length > 0 ? Math.max(...data.scores) : 0,
         highestLevel: data.highestLevel || 0
     }));
     
@@ -358,6 +358,21 @@ function updatePage() {
         elements.currentPageElement.textContent = `Page ${currentPage} of ${totalPages}`;
     }
     makeCircles();
+}
+
+
+const darkModeToggle = document.getElementById('darkModeToggle');
+const body = document.body;
+
+darkModeToggle.addEventListener('change', () => {
+    body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+});
+
+const savedDarkMode = localStorage.getItem('darkMode');
+if (savedDarkMode === 'true') {
+    body.classList.add('dark-mode');
+    darkModeToggle.checked = true;
 }
 
 // Initializing Game

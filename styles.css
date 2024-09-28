@@ -7,6 +7,7 @@
     --text-color: #333;
     --card-background: #ffffff;
     --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --hover-background: #e0e0e0;
 }
 
 * {
@@ -17,12 +18,80 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: var(--text-color);
     line-height: 1.6;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+.dark-mode {
+    --primary-color: #2980b9;
+    --secondary-color: #27ae60;
+    --background-color: #2c3e50;
+    --text-color: #ecf0f1;
+    --card-background: #34495e;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --hover-background: #445566;
+}
+
+/* Dark mode toggle styles */
+.dark-mode-toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    margin-left: 15px;
+}
+
+.dark-mode-checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.dark-mode-label {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.dark-mode-label .fa-sun {
+    color: #f39c12;
+}
+
+.dark-mode-label .fa-moon {
+    color: #f1c40f;
+}
+
+.dark-mode-ball {
+    position: absolute;
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.dark-mode-checkbox:checked + .dark-mode-label {
+    background-color: #2c3e50;
+}
+
+.dark-mode-checkbox:checked + .dark-mode-label .dark-mode-ball {
+    transform: translateX(30px);
 }
 
 #app {
@@ -46,7 +115,7 @@ body {
 }
 
 h1, h2, h3 {
-    color: #4a4a4a;
+    color: var(--text-color);
     margin-bottom: 15px;
     text-align: center;
 }
@@ -62,14 +131,14 @@ button {
     font-size: 1.1em;
     padding: 12px 24px;
     background-color: var(--secondary-color);
-    color: white;
+    color: var(--card-background);
 }
 
 .medium-button {
     font-size: 0.9em;
     padding: 8px 16px;
     background-color: var(--primary-color);
-    color: white;
+    color: var(--card-background);
 }
 
 .big-button:hover, .medium-button:hover {
@@ -112,7 +181,7 @@ button {
 }
 
 .nav-button:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: var(--hover-background);
 }
 
 #homepage {
@@ -153,7 +222,8 @@ button {
     font-size: 1.2em;
     font-weight: bold;
     padding: 8px;
-    background-color: white;
+    background-color: var(--card-background);
+    color: var(--text-color);
     border-radius: 5px;
     box-shadow: var(--card-shadow);
 }
@@ -183,7 +253,7 @@ button {
     font-size: 1em;
     font-weight: bold;
     background-color: var(--primary-color);
-    color: white;
+    color: var(--card-background);
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -193,6 +263,10 @@ button {
 .circle:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+body, .page, #main-nav, .game-board, .stat-card, .recent-scores, #leaderboardTable tr, .circle {
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #pauseButton {
@@ -216,6 +290,8 @@ input[type="password"] {
     border-radius: 5px;
     font-size: 1em;
     width: 100%;
+    background-color: var(--card-background);
+    color: var(--text-color);
 }
 
 /* Enhanced User Profile Styles */
@@ -282,7 +358,7 @@ input[type="password"] {
 
 .stat-card p {
     font-size: 0.9em;
-    color: #6c757d;
+    color: var(--text-color);
     margin-bottom: 5px;
 }
 
@@ -321,7 +397,7 @@ input[type="password"] {
 }
 
 #recentScores li:hover {
-    background-color: #f0f0f0;
+    background-color: var(--hover-background);
 }
 
 .score-value {
@@ -395,7 +471,7 @@ input[type="password"] {
 
 #leaderboardTable th {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--card-background);
     font-weight: bold;
     text-transform: uppercase;
 }
